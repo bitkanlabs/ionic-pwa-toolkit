@@ -28,6 +28,7 @@ declare global {
 
 import '@ionic/core';
 import 'ionicons';
+import '@stencil/redux';
 
 
 declare global {

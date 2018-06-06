@@ -17,14 +17,22 @@
   },
   "dependencies": {
     "@ionic/core": "4.0.0-alpha.7",
-    "@stencil/core": "^0.9.6"
+    "@stencil/core": "^0.9.7",
+    "@stencil/redux": "clarkorz/stencil-redux",
+    "dva-core": "clarkorz/dva-core",
+    "i18next": "^11.3.2",
+    "i18next-browser-languagedetector": "^2.2.0",
+    "i18next-chained-backend": "^0.1.2",
+    "i18next-fetch-backend": "^0.1.0",
+    "i18next-xhr-backend": "^1.5.1",
+    "redux": "^4.0.0"
   },
   "devDependencies": {
     "@stencil/dev-server": "latest",
-    "@stencil/sass": "0.0.3",
+    "@stencil/sass": "^0.0.5",
     "@stencil/utils": "latest",
-    "@types/jest": "^22.2.2",
-    "jest": "^22.4.3"
+    "@types/jest": "^23.0.0",
+    "jest": "^23.1.0"
   },
   "repository": {
     "type": "git",

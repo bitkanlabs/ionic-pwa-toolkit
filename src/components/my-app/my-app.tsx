@@ -1,13 +1,24 @@
 import '@ionic/core';
-import { Component, Prop, Listen } from '@stencil/core';
+import { Component, Listen, Prop } from '@stencil/core';
+import { Store } from '@stencil/redux';
+import createStore from '../../store';
 
 @Component({
-  tag: 'my-app',
-  styleUrl: 'my-app.css'
+  tag     : 'my-app',
+  styleUrl: 'my-app.css',
 })
 export class MyApp {
 
+  @Prop({ context: 'store' }) store: Store;
   @Prop({ connect: 'ion-toast-controller' }) toastCtrl: HTMLIonToastControllerElement;
+
+  componentWillLoad() {
+    // Only do this once, in the root component
+    this.store.setStore(createStore({}));
+    // tslint:disable-next-line
+    console.log(this.store);
+    this.store.getStore().dispatch({ type: 'index/init' });
+  }
 
   /**
    * Handle service worker updates correctly.
@@ -21,12 +32,12 @@ export class MyApp {
   @Listen('window:swUpdate')
   async onSWUpdate() {
     const toast = await this.toastCtrl.create({
-      message: 'New version available',
+      message        : 'New version available',
       showCloseButton: true,
-      closeButtonText: 'Reload'
+      closeButtonText: 'Reload',
     });
     await toast.present();
-    await toast.onWillDismiss()
+    await toast.onWillDismiss();
     window.location.reload();
   }
 
